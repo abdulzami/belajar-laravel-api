@@ -1,0 +1,122 @@
+### Register User API
+POST http://localhost:8000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username" : "zami",
+    "password" : "rahasia",
+    "name" : "Abdul Aziz Zam Zami"
+}
+
+### Login User API
+POST http://localhost:8000/api/users/login
+Content-Type: application/json
+
+{
+    "username" : "zami",
+    "password" : "rahasia"
+}
+### GET Current User API
+GET http://localhost:8000/api/users/current
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### Update Current User API
+PATCH http://localhost:8000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+{
+    "name" : "Abdul Zami"
+}
+
+### Logout user API
+DELETE http://localhost:8000/api/users/logout
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### Create Contact API
+POST http://localhost:8000/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+{
+    "first_name" : "Lance",
+    "last_name" : "Tank",
+    "email" : "mangabdoel@gmail.com",
+    "phone" : "02192109012"
+}
+
+### GET Contact API #1018
+GET http://localhost:8000/api/contacts/1018
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### Update Contact API #1018
+PUT http://localhost:8000/api/contacts/1018
+Content-Type: application/json
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+{
+    "first_name" : "Mang",
+    "last_name" : "Doel",
+    "email" : "cakdoel@gmail.com",
+    "phone" : "02192109012"
+}
+
+### Delete Contact API #1018
+DELETE http://localhost:8000/api/contacts/1018
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### Search Contact API
+GET http://localhost:8000/api/contacts?email=mang
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### Create Address API #1019
+POST http://localhost:8000/api/contacts/1019/addresses
+Accept: application/json
+Content-Type: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+{
+    "street" : "jalan jalan ke surabaya 3",
+    "city" : "Gresik",
+    "province" : "Jawa Timur",
+    "country" : "Indonesia",
+    "postal_code" : "999999"
+}
+
+### GET Address API #57
+GET http://localhost:8000/api/contacts/1019/addresses/57
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### Update Address API #57
+PUT http://localhost:8000/api/contacts/1019/addresses/57
+Accept: application/json
+Content-Type: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+{
+    "street" : "jalan jalan ke mana ya",
+    "city" : "Gresik",
+    "province" : "Jawa Timur",
+    "country" : "Indonesia",
+    "postal_code" : "999999"
+}
+
+### Remove Address API #56
+DELETE http://localhost:8000/api/contacts/1019/addresses/56
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab
+
+### List Address API
+GET http://localhost:8000/api/contacts/1019/addresses
+Accept: application/json
+Authorization: d6641648-290b-498c-87c0-c5bf00c41bab

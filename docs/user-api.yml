@@ -1,0 +1,196 @@
+openapi: '3.0.2'
+info:
+  title: User API
+  description: User API
+  version: '1.0'
+servers:
+  - url: http://localhost:8000
+paths:
+  /api/users:
+    post:
+      description: Register new user
+      requestBody:
+        content:
+          applcation/json: 
+            examples:
+              zami:
+                description: Register user zami
+                value:
+                  username: zami
+                  password: rahassia
+                  name: Abdul Aziz Zam Zami
+            schema:
+              type: object
+              required:
+                - name
+                - password
+                - username
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                name:
+                  type: string
+      responses:
+        400:
+          description: Validation error
+          content:
+            applcation/json:
+              examples:
+                validationerror:
+                  description: Validation error
+                  value:
+                    errors:
+                      username:
+                        - username must not be blank
+                        - username min 6 character
+                      name:
+                        - username must not be blank
+                        - username min 6 character
+        201:
+          description: Success register user
+          content:
+            applcation/json:
+              examples:
+                success :
+                  description: Success register user
+                  value:
+                    data:
+                      id: 1
+                      name: Abdul Aziz Zam Zami
+                      username: Zami
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      username:
+                        type: string
+                      name:
+                        type: string
+                  errors:
+                    type: object
+  /api/users/login:
+    post:
+      description: Login user
+      requestBody:
+        content:
+          applcation/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Success Login
+          content:
+            applcation/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      username:
+                        type: string
+                      name:
+                        type: string
+                      token:
+                        type: string
+                  errors:
+                    type: object
+  /api/users/current:
+    get:
+      description: Get current user
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+      responses:
+        200: 
+          description: Success get current user
+          content:
+            applcation/json:
+               schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      username:
+                        type: string
+                      name:
+                        type: string
+                  errors:
+                    type: object
+    patch:
+      description: Update current user
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+      requestBody:
+        description: Update current user
+        content:
+          applcation/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200: 
+          description: Success update user
+          content:
+            applcation/json:
+               schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      username:
+                        type: string
+                      name:
+                        type: string
+                  errors:
+                    type: object
+  /api/users/logout:
+    delete:
+      description: Logout current user
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+      responses:
+        200: 
+          description: Success logout user
+          content:
+            applcation/json:
+               schema:
+                type: object
+                properties:
+                  data:
+                    type: boolean
+                  errors:
+                    type: object
+
+
